@@ -1,5 +1,3 @@
-fun List<KotlinPerson>.averageAge(): Double = this.map { it.age }.average()
-
 fun main(args: Array<String>) {
     val people = listOf(KotlinPerson(name = "Budi", age = 25),
             KotlinPerson(name = "Susi", gender = "Wanita", age = 25),
@@ -26,5 +24,6 @@ fun main(args: Array<String>) {
     // each gender count
     people.groupingBy { it.gender }.eachCount()
     // all people where age below average age
-    people.filter { val averageAge = people.averageAge(); it.age <= averageAge }
+    val averageAge = people.map { it.age }.average()
+    people.filter { it.age <= averageAge }
 }
